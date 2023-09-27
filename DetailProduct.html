@@ -1,0 +1,491 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Detail Product</title>
+    <script src="https://kit.fontawesome.com/ad98048fa9.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+        *{
+            font-family:Arial;
+        }
+        .galery{
+            float:left;
+            width:50%;
+            height:700px;
+            margin-left:auto;
+        }
+        #main-pic{
+            border:1px solid lightgrey;
+            border-radius:10px;
+            border-style:double;
+            border-collapse:separate;
+            width:450px;
+            height:450px;
+        }
+        .detail-info{
+            float:right;
+            width:50%;
+            height:700px;
+            overflow-y:scroll;
+        }
+
+        #productCat {
+            font-size: 28px;
+            text-align: left;
+            vertical-align: middle;
+            margin-left:130px;
+            margin-top:50px;
+        }
+
+        #product-table {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #product-td {
+            background-color: white;
+            width: 25%;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            border-spacing: 20px;
+        }
+
+        #product-img {
+            max-width: 250px;
+            max-height: 300px;
+        }
+
+
+        #product-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #newPrice, #oldPrice {
+            display: inline;
+        }
+
+        #newPrice {
+            color: blue;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        #oldPrice {
+            color: lightgrey;
+            font-size: 10px;
+            text-decoration: line-through;
+        }
+        #rating-star{
+            text-align:left;
+            margin-left:-39px;
+            float:left;
+        }
+        .rating li{
+            display:inline-block;
+        }
+        .rating pre{
+            float:left;
+            margin-left:30px;
+            color:blue;
+        }
+        .rating{
+            height:5px;
+        }
+        .price{
+            margin-top:40px;
+            text-align:left;
+            border-top:1px solid lightgray;
+        }
+        .price ul{
+            margin-top:10px;
+            margin-left:-35px;
+        }
+        .price li{
+            display:inline-block;
+            word-spacing:10px;
+        }
+        #new-price{
+            font-size:24px;
+            color:blue;
+        }
+        #old-price{
+            font-size:22px;
+            text-decoration:line-through;
+            color: lightgray;
+        }
+        .capacity{
+            margin-top:-25px;
+        }
+        .capacity ul{
+            text-align:left;
+            margin-left:-39px;
+        }
+        .capacity li{
+            display:inline-block;
+            border:1px solid lightgray;
+            border-radius:5px;
+            padding-top:8px;
+            padding-bottom:5px;
+            padding-left:5px;
+            padding-right:5px;
+        }
+        #chosen{
+            border-color:blue;
+        }
+        .color ul{
+            text-align:left;
+            margin-left:-39px;
+        }
+        .color li{
+            display:inline-block;
+        }
+        #c1{
+            width:25px;
+            height:25px;
+            border:1px solid black;
+            border-radius:999px;
+            background-color:black;
+        }
+        #c2 {
+            width: 25px;
+            height: 25px;
+            border: 1px solid lightpink;
+            border-radius: 999px;
+            background-color: lightpink;
+        }
+        #c3 {
+            width: 25px;
+            height: 25px;
+            border: 1px solid lightyellow;
+            border-collapse:separate;
+            border-radius: 999px;
+            background-color: lightyellow;
+        }
+        #c4 {
+            width: 25px;
+            height: 25px;
+            border: 1px solid lightgreen;
+            border-radius: 999px;
+            background-color: lightgreen;
+        }
+        #c5 {
+            width: 25px;
+            height: 25px;
+            border: 1px solid lightblue;
+            border-radius: 999px;
+            background-color: lightblue;
+        }
+        .uudai{
+            border:1px solid lightgray;
+            border-radius:5px;
+            padding-left:10px;
+        }
+        #lama{
+            color:red;
+            font-size:15px;
+        }
+        .uudai pre{
+            font-size:13px;
+        }
+        .uudai i{
+            vertical-align:middle;
+        }
+        .your-info{
+            margin-top:15px;
+        }
+        #name {
+            float: left;
+            width: 48.5%;
+            height:35px;
+            font-size:20px;
+            border-radius:5px;
+        }
+        #phonenumber{
+            float:right;
+            width:48.5%;
+            height:35px;
+            font-size:20px;
+            border-radius:5px;
+            margin-top:-20px;
+        }
+        #email {
+            float: left;
+            width: 99%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top:5px;
+        }
+        #city {
+            float: left;
+            width: 48.5%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        #district {
+            float: right;
+            width: 48.5%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: -20px;
+        }
+
+        #shopaddress {
+            float: left;
+            width: 99%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #blank {
+            float: left;
+            width: 99%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #note {
+            float: left;
+            width: 99%;
+            height: 35px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #submit {
+            float: left;
+            width: 99%;
+            height: 60px;
+            font-size: 20px;
+            text-align:center;
+            vertical-align:middle;
+            background-color:darkblue;
+            color:white;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .your-info a{
+            text-decoration:none;
+            color:blue;
+        }
+        .selection ul{
+            text-align:center;
+            margin-top:50px;
+        }
+        .selection li{
+            display: inline-block;
+            border: 1px solid lightgray;
+            border-radius:5px;
+            font-size:15px;
+            padding:10px 15px 10px 15px;
+            margin-right:10px;
+        }
+        #mtsp{
+            border-color:blue;
+            color:blue;
+        }
+        .anh{
+            background-color: lightgrey;
+            margin-top:50px;
+        }
+        #brand{
+            margin-top:120px;
+            margin-left:650px;
+        }
+        #promote{
+            margin-top:40px;
+            margin-left:-350px;
+        }
+        .lt{
+            margin-top:100px;
+        }
+        .lt ul{
+            display:block;
+            text-align:center;
+        }
+        .lt li{
+            text-decoration:none;
+            padding: 15px 0px 15px 0px;
+            font-size:17px;
+        }
+        #dc{
+            width:130px;
+            height:10px;
+            margin-left:630px;
+            vertical-align:middle;
+            border:1px solid black;
+            border-radius:20px;
+        }
+        #a1{
+            width:1200px;
+            height:500px;
+            margin-left:120px;
+            margin-top:50px;
+            background-color:lightgray;
+            border: 1px solid lightgray;
+            border-radius:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="galery">
+        <div id="main-pic">
+            <img src="https://shopdunk.com/images/thumbs/0019818_iphone-15-256gb_550.jpeg" />
+        </div>
+        <div class="sliders">
+
+        </div>
+    </div>
+    <div class="detail-info">
+        <h2>iPhone 15 256 GB</h2>
+        <div class="rating">
+            <ul id="rating-star">
+                <li><i class="fa-regular fa-star fa-2xs" style="color: #fcf403;"></i></li>
+                <li><i class="fa-regular fa-star fa-2xs" style="color: #fcf403;"></i></li>
+                <li><i class="fa-regular fa-star fa-2xs" style="color: #fcf403;"></i></li>
+                <li><i class="fa-regular fa-star fa-2xs" style="color: #fcf403;"></i></li>
+                <li><i class="fa-regular fa-star fa-2xs" style="color: #fcf403;"></i></li>
+            </ul>
+            <pre>Đánh giá | <i class="fa-regular fa-circle-plus fa-2xs" style="color: #6cd1f9;"></i> So sánh</pre>
+        </div>
+        <div class="price">
+            <ul>
+                <li><p id="new-price">24.490.000</p></li>
+                <li><p id="old-price">27.990.000</p></li>
+            </ul>
+        </div>
+        <div class="capacity">
+            <p style="font-size:13px;color:gray;">Dung lượng</p>
+            <ul>
+                <li>128GB</li>
+                <li id="chosen">256GB</li>
+                <li>512GB</li>
+            </ul>
+        </div>
+        <div class="color">
+            <p style="font-size:13px;color:gray;">Màu sắc</p>
+            <ul>
+                <li id="c1"></li>
+                <li id="c2"></li>
+                <li id="c3"></li>
+                <li id="c4"></li>
+                <li id="c5"></li>
+            </ul>
+        </div>
+        <p>Thời gian giao hàng dự kiến:</p>
+        <div class="uudai">
+            <p><i class="fa-solid fa-gift fa-2xs"></i><b> Ưu đãi</b></p>
+            <p id="lama">I. Ưu đãi thanh toán</p>
+            <pre>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm tới <b>2.000.000đ</b> qua cổng thanh toán <a id="watchdetail" href="#">(xem chi tiết)</a>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm tới <b>2.000.000đ</b> khi thanh toán qua thẻ tín dụng <a id="watchdetail" href="#">(xem chi tiết)</a>
+            </pre>
+            <p id="lama">II. Ưu đãi trả góp (29/9 - 31/12)</p>
+            <pre>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Ưu đãi tới <b>700.000đ</b> khi thanh toán trả góp <a id="watchdetail" href="#">(xem chi tiết)</a></pre>
+            <p id="lama">III. Thu cũ đổi mới lên đời iPhone 15 series</p>
+            <pre>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Trợ giá đến <b>1.500.000đ</b> cho khách lên đời iPhone 15 series <a id="watchdetail" href="#">(xem chi tiết)</a>
+            </pre>
+            <p id="lama">IV. Ưu đãi mua kèm iPhone 15 series</p>
+            <pre>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm đến <b>1.000.000đ</b> khi mua iPad, Watch, iMac kèm iPhone 15 series <a id="watchdetail" href="#">(xem chi tiết)</a>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm đến 10% khi mua Bảo hành VIP, Bảo hành tiêu chuẩn mở rộng (6 tháng, 12 tháng)
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm đến 20% khi mua Bảo hành kim cương (Rơi vỡ, vào nước)
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giảm <b>300.000đ</b> khi mua ốp lưng chính hãng Apple cho iPhone 15 series
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Mua combo 3 món phụ kiện giảm ngay <b>100.000đ</b> (1 cường lực, 1 ốp lưng, 1 củ sạc)
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Mua combo 4 món phụ kiện giảm ngay <b>200.000đ</b> (1 cường lực, 1 ốp lưng, 1 củ sạc, 1 sạc dự phòng)
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giá chỉ <b>990.000đ</b> cho combo 3 phụ kiện: 1 ốp lưng Spigen + 1 Cường lực Kingbull + 1 Sạc nhanh 33W Innostyle
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Giá chỉ <b>890.000đ</b> cho combo 3 phụ kiện: 1 ốp lưng ZAGG + 1 Cường lực ZAGG + 1 Sạc nhanh 30W Mophie
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Tặng sim số đẹp Wintel (chi tiết liên hệ NVBH)
+            </pre>
+            <p id="lama">VI. Ưu đãi cán bộ công nhân viên VietinBank, Vietcombank, VinFast</p>
+            <pre>
+<i class="fa-solid fa-circle-check fa-2xs" style="color: #21e61e;"></i> Tặng voucher giảm giá <b>500.000đ</b>
+            </pre>
+        </div>
+        <form class="your-info">
+            <label><b>Thông tin của bạn</b></label><br />
+            <input id="name" type="text" placeholder="Họ và tên (bắt buộc)" /><br />
+            <input id="phonenumber" type="number" placeholder="Số điện thoại (bắt buộc)" /><br />
+            <input id="email" type="email" placeholder="Email (Vui lòng điền email để nhận hóa đơn VAT)" /><br />
+            <label><b>Cách thức nhận hàng</b></label><br />
+            <input type="radio" />Nhận tại cửa hàng <input type="radio" />Giao tận nơi<br />
+            <input id="city" type="text" placeholder="Tỉnh, Thành phố" /><br />
+            <input id="district" type="text" placeholder="Quận huyện" /><br />
+            <input id="shopaddress" type="text" placeholder="Chọn địa chỉ cửa hàng" /><br />
+            <label>Địa chỉ cụ thể:</label><br />
+            <input id="blank" type="text" /><br />
+            <input id="note" type="text" placeholder="Ghi chú" /><br />
+            <input id="agree" type="checkbox" /> Bằng cách Click, bạn đồng ý với <a href="#">điều khoản và điều kiện</a> của ShopDunk<br />
+            <input id="submit" type="submit" value="Đặt cọc
+               (Đặt 1.000.000đ - Thanh toán Online)" />
+        </form>
+    </div>
+    <div class="product">
+        <table id="product-table">
+            <h1 id="productCat">Gợi ý phụ kiện đi kèm</h1>
+            <tr>
+                <td id="product-td">
+                    <img id="product-img" src="https://shopdunk.com/images/thumbs/0019158_cuong-luc-apple-iphone-15-series-zeelot-solidleek_240.jpeg" />
+                    <p id="product-name">Cường lực Apple iPhone 15 series Zeelot Solidleek</p>
+                    <p id="newPrice">350.000</p>
+                    <p id="oldPrice">390.000</p>
+                </td>
+                <td id="product-td">
+                    <img id="product-img" src="https://shopdunk.com/images/thumbs/0021877_cuong-luc-camera-uniq-optix-for-iphone-15-iphone-15-plus_240.jpeg" />
+                    <p id="product-name">Cường lực Camera UNIQ OPTIX for iPhone 15/ iPhone 15 Plus</p>
+                    <p id="newPrice">350.000</p>
+                    <p id="oldPrice">400.000</p>
+                </td>
+                <td id="product-td">
+                    <img id="product-img" src="https://shopdunk.com/images/thumbs/0001395_sac-20w-usb-c-power-adapter_240.png" />
+                    <p id="product-name">Sạc 20W USB-C Power Adapter</p>
+                    <p id="newPrice">510.000</p>
+                    <p id="oldPrice">690.000</p>
+                </td>
+                <td id="product-td">
+                    <img id="product-img" src="https://shopdunk.com/images/thumbs/0021819_op-lung-silicon-magsafe-cho-iphone-15_240.jpeg" />
+                    <p id="product-name">Ốp Lưng Silicon MagSafe cho iPhone 15</p>
+                    <p id="newPrice">1.490.000</p>
+                    <p id="oldPrice">1.590.000</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="selection">
+        <ul>
+            <li id="mtsp">Mô tả sản phẩm</li>
+            <li>So sánh iPhone</li>
+            <li>Thông số kỹ thuật</li>
+            <li>Chi tiết sản phẩm</li>
+            <li>Hỏi đáp</li>
+        </ul>
+    </div>
+    <div class="anh">
+        <img id="brand" src="https://shopdunk.com/images/uploaded-source/compareiphone15/hero_logo_large.png?1694035518949" />
+        <img id="promote" src="https://shopdunk.com/images/uploaded-source/compareiphone15/hero_large.png?1694035518952" />
+    </div>
+    <div class="lt">
+        <ul>
+            <li id="dh">Đặt hàng từ 22.9</li>
+            <li id="gh">Giao hàng sớm từ 29.9</li>
+            <li id="dc">Đặt cọc ngay</li>
+        </ul>
+    </div>
+    <div class="anhchitet">
+        <img id="a1" src="https://shopdunk.com/images/uploaded-source/compareiphone15/dynamic_island_large.png?1694035518950" />
+    </div>
+</body>
+</html>
